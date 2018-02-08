@@ -1,0 +1,278 @@
+<head>
+	<meta charset="UTF-8">
+	<title>DITAS - Medical App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="shortcut icon" href="images/favicon.png">
+	<script src="js/ditas.js"></script>
+</head>
+
+<body>
+
+	<header class="header" class="clearfix">
+		<div class="logo">
+			<img src="images/ditas.png" width="190" height="64">
+		</div>
+	</header>
+
+	<div class="modal-dialog" style="width: 1020px;">
+		<!--
+			################################################################################
+			################################## CONTROLS ####################################
+			################################################################################
+			-->
+		<div class="modal-content" style="height: 165px;">
+			<div class="row">
+				<div class="col-md-3" style="width: 480px !important;">
+					<div class="modal-header">
+						<h4 class="modal-title">Medical App</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label  class="col-md-3 control-label" style="font-size:13px">SSN</label>
+							<input type="text" class="form-control" name="ssn" id="ssn" style="width:250px !important"/>
+							<label class="col-md-3 control-label" style="font-size:13px;margin-top: 17px;">Blood test</label>
+							<select name="" id="blood-test-input" class="form-control"  style="width:250px !important;margin-top: 10px;" onchange="enableTimeseries()">
+								<option disabled selected value> -- select an option -- </option>
+								<option value="Cholesterol">Cholesterol</option>
+								<option value="Triglyceride">Triglyceride</option>
+								<option value="Hepatitis">Hepatitis</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<!--
+					Patient Details radiobutton
+				-->
+				<div class="col-md-3" style="width:220px;margin-left: -50px !important;">
+					<div class="modal-header">
+						<h4 class="modal-title">&nbsp</h4>
+					</div>
+					<div class="modal-body" style="padding-top: 31px!important;">
+						<div class="form-group">
+							<label for="details-radio" class="col-md-3 control-label" style="font-size:13px;width:100px!important;">Patient details</label>
+							<!--<input type="radio" name="chx" class="form-control radio" name="details-radio" id="details-radio" />-->
+							<input type="radio" name="chx" class="option-input radio" name="details-radio" id="details-radio" />
+						</div>
+					</div>
+				</div>
+
+				<!--
+					Patient examvalues radiobutton
+				-->
+				<div class="col-md-3" style="width:220px;margin-left: -50px !important;">
+					<div class="modal-header">
+						<h4 class="modal-title">&nbsp</h4>
+					</div>
+					<div class="modal-body" style="padding-top: 31px!important;">
+						<div class="form-group">
+							<label for="examvalues-radio" class="col-md-3 control-label" style="font-size:13px;width:120px!important;">Patient exam values</label>
+							<input type="radio" name="chx" class="option-input radio" name="examvalues-radio" id="examvalues-radio" />
+						</div>
+					</div>
+				</div>
+
+				<!--
+					Timeseries radiobutton
+				-->
+				<div class="col-md-3" style="width:220px;margin-left: -50px !important;">
+					<div class="modal-header">
+						<h4 class="modal-title">&nbsp</h4>
+					</div>
+					<div class="modal-body" style="padding-top: 31px!important;">
+						<div class="form-group">
+							<label for="timeseries-radio" id="timeseries-label" class="col-md-3 control-label" style="font-size:13px;width:100px!important;color:#B2B2B2;">Patient timeseries</label>
+							<input type="radio" name="chx" class="option-input radio" name="timeseries-radio" id="timeseries-radio" disabled/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+			################################################################################
+			################################### RESULTS DIV ################################
+			################################################################################
+		-->
+		<div id="results-container">
+
+			<!--
+				################################################################################
+				############################ PATIENT DETAILS RESULTS ###########################
+				################################################################################
+			-->
+			<div id="patient-details-div" class="modal-content">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="modal-header">
+							<h4 class="modal-title">Patient details</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="col-md-3 control-label" style="font-size:13px">SSN:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="details-ssn-form" style="width:250px !important" disabled/>
+								</div>
+								<label class="col-md-3 control-label" style="font-size:13px">Lastname:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="details-lastname-form" style="width:250px !important" disabled/>
+								</div>
+								<label class="col-md-3 control-label" style="font-size:13px">Firstname:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="details-firstname-form" style="width:250px !important" disabled/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="modal-body" style="padding-top:70px;">
+							<label class="col-md-3 control-label" style="font-size:13px">Gender:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="details-gender-form" style="width:250px !important" disabled/>
+							</div>
+							<label class="col-md-3 control-label" style="font-size:13px">E-mail:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="details-email-form" style="width:250px !important" disabled/>
+							</div>
+							<label class="col-md-3 control-label" style="font-size:13px">Age:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="details-age-form" style="width:250px !important" disabled/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+				################################################################################
+				######################## PATIENT EXAM VALUES RESULTS ###########################
+				################################################################################
+			-->
+			<div id="patient-exam-values-div" class="modal-content" >
+				<div class="row">
+					<div class="col-md-6">
+						<div class="modal-header">
+							<h4 class="modal-title">Patient exam values</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="col-md-3 control-label" style="font-size:13px">SSN:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="exam-ssn-form" style="width:250px !important" disabled/>
+								</div>
+								<label class="col-md-3 control-label" style="font-size:13px">Lastname:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="exam-lastname-form" style="width:250px !important" disabled/>
+								</div>
+								<label class="col-md-3 control-label" style="font-size:13px">Firstname:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="exam-firstname-form" style="width:250px !important" disabled/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="modal-body" style="padding-top:70px;">
+							<label class="col-md-3 control-label" style="font-size:13px">Cholesterol:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="exam-cholesterol-form" style="width:250px !important" disabled/>
+							</div>
+							<label class="col-md-3 control-label" style="font-size:13px">Triglyceride:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="exam-triglyceride-form" style="width:250px !important" disabled/>
+							</div>
+							<label class="col-md-3 control-label" style="font-size:13px">Hepatitis:</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control" id="exam-hepatitis-form" style="width:250px !important" disabled/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+				################################################################################
+				############################ TIMESERIES RESULTS ################################
+				################################################################################
+			-->
+			<div id="timeseries-div" class="modal-content" style="width:100%">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="modal-header">
+							<h4 class="modal-title">Timeseries</h4>
+						</div>
+						<div class="modal-body" style="padding-left: 30px!important;padding-right: 30px!important;height:230px!important">
+							<div class="form-group">
+								<table id="timeseries-table" class="table table-striped" align="center" style="font-size:12px">
+									<thead>
+										<tr>
+											<th>Year</th>
+											<th>Cholesterol</th>
+											<th>Triglyceride</th>
+											<th>Hepatitis</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+				################################################################################
+				############################### LOADING DIV #################################
+				################################################################################
+			-->
+			<div id="loading-div" class="modal-content" style="background-color:#F1F1F1;padding-bottom: 15px !important;width: 100%;visibility:hidden">
+				<div class="row">
+					<center><img src="images/loading.gif" width="200" height="129"></center>
+				</div>
+			</div>
+
+		</div>
+		<!-- FINLOADING -->
+	</div>
+	<!-- fin container -->
+	</div>
+	</div>
+
+	<!--
+		################################################################################
+		################################# INFO MODALS ##################################
+		################################################################################
+	-->
+	<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width:auto!important">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+					<h5 class="modal-title" id="info-modal-title" style="font-size:14px"></h5>
+				</div>
+				<div class="modal-body" id="info-modal-body">
+					<!-- Sets by jQuery -->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--
+		################################################################################
+		################################# END MODALS ###################################
+		################################################################################
+	-->
+
+</body>
