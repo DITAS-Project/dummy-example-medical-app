@@ -5,7 +5,7 @@ The medical app interface for the dummy example. At this stage it is a thin HTML
 2. Given a SSN returns the last values for all the exams.
 3. Given a SSN an a specific blood test (e.g. cholesterol) returns the timeseries of the value of this test for the given patient.
 
-The applicaton will get the data by calling the VDC API. The JS files are already prepared to make data calls to the VDC as soon as the VDC component is ready. It just need to set the real endpint and some fine tuning to adapt to the VDC response data format.
+The applicaton will get the data by calling the VDC API. The JS files are already prepared to make data calls to the VDC as soon as the VDC component is ready. It just needs to set the real endpoint and some fine tuning to adapt to the VDC response data format.
 
 # Some screenshots
 
