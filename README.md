@@ -10,10 +10,10 @@ The applicaton gets the data by calling the VDC API.
 
 These screenshots have been generated using dummy data.
 
-![alt text](screenshots/sh_1.jpg)
+![sh1](screenshots/sh_1.jpg)
 
-![alt text](screenshots/sh_2.jpg)
+![sh2](screenshots/sh_2.jpg)
 
-![alt text](screenshots/sh_3.jpg)
+![sh3](screenshots/sh_3.jpg)
 
-![alt text](screenshots/sh_4.jpg)
+![sh4](screenshots/sh_4.jpg)
