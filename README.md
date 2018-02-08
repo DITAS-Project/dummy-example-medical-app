@@ -11,3 +11,9 @@ The applicaton gets the data by calling the VDC API.
 These screenshots have been generated using dummy data.
 
 ![alt text](screenshots/sh_1.jpg)
+
+![alt text](screenshots/sh_2.jpg)
+
+![alt text](screenshots/sh_3.jpg)
+
+![alt text](screenshots/sh_4.jpg)
