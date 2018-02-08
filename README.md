@@ -6,3 +6,8 @@ The medical app interface for the dummy example. At this stage it is a thin HTML
 
 The applicaton gets the data by calling the VDC API.
 
+# Some screenshots
+
+These screenshots have been generated using dummy data.
+
+![alt text](screenshots/sh_1.jpg)
